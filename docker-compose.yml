@@ -1,0 +1,17 @@
+version: "3"
+services:  
+  msclient:
+    build: .\spring-boot-docker
+    container_name: "spring-on-docker"
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb  
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo-on-docker:27017
+   
+  mongodb:
+    image: mongo
+    container_name: mongo-on-docker
+    ports:
+      - 27017:27017   
